@@ -1,0 +1,1 @@
+I started this project as a place document changes while implementing ES6.  But decided to expand it as a simple reference to all aspects of JS and save interesting bit of code, too.
