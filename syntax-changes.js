@@ -9,7 +9,7 @@ if (true) {
 	let name = "Bean";
 	let type = "food-person"
 	age = 66;
-	console.log(name, type, age); // Bean food person 66
+	console.log(name, type, age); // Bean food-person 66
 }
 console.log(name, age); // Taco 66
 
@@ -21,7 +21,8 @@ const OBJ = {
 	num1: 1122
 }
 
-OBJ.num2 = 1123; // valid, because the original object isn't changed being rewritten.
+OBJ.num1 = 1123; // valid, because the original object isn't changed being rewritten.
+OBJ.num2 = 1124; // valid
 
 const ARR = ['lobsta', 'roll'];
 ARR.shift(); 
@@ -41,7 +42,7 @@ var multiFunc = (obj, num) => {
 	return obj;
 }
 
-setTimeout(() => console.log(`Hello ${name}`)); //anonymous arrow function
+setTimeout(() => console.log(`Hello ${name}`), 1000); //anonymous arrow function
 
 console.log(singleLineFunc());
 console.log(singleArgFunc(NUM));
@@ -73,7 +74,101 @@ function isEqual(number, compare = number) {
 console.log(isEqual(myNum)); // Returns true. Number is equal to myNum and compare is equal to the number argument
 
 
+//OBJECT LITERAL EXTENTIONS
+
+let seeds = 'doesn\'t';
+
+var fruitObj = {
+	type: 'apple',
+	seeds, // looks for other variable declaration and assignment
+	fruitFunc() {
+		console.log(`This ${this.type} ${this.seeds} have seeds`);
+	}
+};
+
+fruitObj.fruitFunc();
 
 
+// REST OPERATOR
+// ... converts list into an array
+
+function totalVal(...numList) {
+	console.log(numList); // argument is now an array
+	let result = 0;
+	for (let i = 0; i < numList.length; i++) {
+		result += numList[i];
+	}
+	console.log(result);
+};
+
+totalVal(1, 5, 10, 15);
+
+
+// SPREAD OPERATOR
+// ... converts an array into a list
+
+console.log(Math.max(...[1,2,3,4,5]));
+
+
+// FOR-OF LOOP
+// quickly loop through an array with the index
+
+function totalVal(...numList) {
+	let result = 0;
+	for ( let number of numList ) {
+		result += number;
+	}
+	console.log(result);
+}
+
+totalVal(1, 5, 10, 15);
+
+
+// TEMPLATE LITERALS
+// preserves syntax and allows for variable injection
+
+let multiLineString = `
+	Hello, ${name}...
+	bye \${name} // escape the variable
+`;
+
+console.log(multiLineString);
+
+
+// DESTRUCTURING ARRAYS
+// used to assign array values to variables
+// original object remains untouched
+
+let numbers = [ 1, 2, 3 ];
+
+let [ a, , c, d, e = 'default' ] = numbers;
+
+console.log(3); // 3
+console.log(d); // undefined
+console.log(e); // default
+
+// swap values with destructing
+
+a = 10;
+b = 20;
+
+[ a, b ] = [ b, a ];
+console.log(a, b);
+
+
+// DESTRUCTURING OBJECTS
+
+var breakfast = {
+	protein: 'eggs',
+	grain: 'toast',
+	alert: function() { 
+		console.log('ring bell') 
+	}
+}
+
+// destructure the object and give the function an alias
+var { protein, grain, alert: noise } = breakfast;
+
+noise();
 
 

@@ -59,7 +59,6 @@ function loaded() {
 }
 
 // onload fires after the entire page loads
-// window.onload = loaded;
 window.onload = loaded;
 
 // DOMContentLoaded fires after the HTML has been loaded and parsed
